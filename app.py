@@ -1,4 +1,5 @@
 import os
+import gdown
 import numpy as np
 import streamlit as st
 from PIL import Image
@@ -39,6 +40,14 @@ IMG_SIZE = (224, 224)
 # ==========================================================
 # LOAD MODEL
 # ==========================================================
+import gdown
+
+os.makedirs(os.path.join(BASE_DIR, "models"), exist_ok=True)
+
+if not os.path.exists(MODEL_PATH):
+    file_id = "1R3K2nb6NPaWC2YRn52XR23aTUvjvEeEW"
+    url = f"https://drive.google.com/uc?id={file_id}"
+    gdown.download(url, MODEL_PATH, quiet=False)
 
 @st.cache_resource
 def load_ai_model():
